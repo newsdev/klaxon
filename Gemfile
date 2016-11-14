@@ -5,7 +5,7 @@ gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer', '= 0.12.2'
+gem 'therubyracer'
 
 gem 'dotenv'
 gem 'jquery-rails'
@@ -32,7 +32,12 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'sinatra'
+end
+
+group :test do
   gem 'webmock'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
