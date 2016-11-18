@@ -14,13 +14,14 @@ class SqsIntegration < ActiveRecord::Base
     puts "slack_integration#send_notification #{self.queue_url}"
 
     page_name = change&.after&.page&.name
-    text = "#{page_name} changed #{page_change_url(change)}"
+    text = "#{page_name} changed #{change&.after&.page&.url}"
 
     payload = {
       "page_name": page_name,
       "text": text,
+      "change_page_url": page_change_url(change),
 
-      "url": page_change_url(change),
+      "url": change&.after&.page&.url,
       "event": "update",
       "source": "klaxon",
       "type": "external",
