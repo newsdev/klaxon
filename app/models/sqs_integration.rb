@@ -17,10 +17,14 @@ class SqsIntegration < ActiveRecord::Base
     text = "#{page_name} changed #{page_change_url(change)}"
 
     payload = {
-      "username": "Klaxon",
       "page_name": page_name,
-      "page_url": page_change_url(change),
       "text": text,
+
+      "url": page_change_url(change),
+      "event": "update",
+      "source": "klaxon",
+      "type": "external",
+      "eventTS": Time.now.to_i
     }
 
     SqsNotification.perform(self.queue_url, payload)
