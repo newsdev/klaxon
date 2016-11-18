@@ -18,7 +18,7 @@ class SqsNotification
             string_value: json, 
           }
         }, 
-        message_body: "Dear SQS Consumer, this is a URL that you should screenshot. Thanks!", 
+        message_body: json, 
         queue_url: queue_url, 
       }) 
     rescue Aws::SQS::Errors::ServiceError => e
