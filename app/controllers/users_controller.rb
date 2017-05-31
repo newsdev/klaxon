@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.all.sort_by { |obj| (obj.display_name.nil? ? 0 : obj.display_name.downcase) }
   end
 
   # GET /users/1
